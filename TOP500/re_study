@@ -1,0 +1,18 @@
+'<li>
+.*?list_num
+.*?(\\d+).
+</div>
+.*?<img src="(.*?)".*?class="name".*?title="(.*?)">
+.*?class="star">
+.*?class="tuijian">
+(.*?)</span>
+.*?class="publisher_info">
+.*?target="_blank">
+(.*?)</a>
+.*?class="biaosheng">
+.*?<span>
+(.*?)</span></div>
+.*?<p><span\\sclass="price_n">&yen;
+(.*?)</span>
+.*?</li>'
+,re.S
