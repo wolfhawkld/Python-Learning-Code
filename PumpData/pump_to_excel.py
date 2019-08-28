@@ -7,10 +7,13 @@ import xlwt
 
 # Global Params Start.
 FILE_SUFFIX = '.cs'
-PUMP_RE = '/SFDC'
-ROOT_PATH = 'C:\\Users\\da.long\\source\\Workspaces\\MFP_Merck'
+# PUMP_RE = '.*?PostAPI.*?webApi.*?'
+# PUMP_RE = '"/SFDC.*?"'
+PUMP_RE = '.*?GetAPI.*?webApi.*?'
+ROOT_PATH = 'C:\\Users\\da.long\\source\\Workspaces\\OCE Wechat Demo'
+EXCEL_FILE_NAME = u'SFDC_API_Get.xls'
 RESULT = xlwt.Workbook(encoding='utf-8', style_compression=0)
-sheet = RESULT.add_sheet('SFDC_API_Worklist', cell_overwrite_ok=True)
+sheet = RESULT.add_sheet('SFDC_API_Get', cell_overwrite_ok=True)
 sheet.write(0, 0, 'API')
 sheet.write(0, 1, 'cs_file')
 sheet.write(0, 2, 'line')
@@ -34,7 +37,7 @@ def get_all_files(root_path):
 def find_re(line, line_num, file_name):
     line_list = []
 
-    pattern = re.compile('"/SFDC.*?"', re.S)
+    pattern = re.compile(PUMP_RE, re.S)
     api_list = re.findall(pattern, line)
     for item in api_list:
         if item is not None:
@@ -101,6 +104,6 @@ def main():
 if __name__ == '__main__':
     main()
 
-RESULT.save(u'SFDC_API_Worklist.xls')
+RESULT.save(EXCEL_FILE_NAME)
 
 
