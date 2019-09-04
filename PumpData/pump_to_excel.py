@@ -7,13 +7,13 @@ import xlwt
 
 # Global Params Start.
 FILE_SUFFIX = '.cs'
-# PUMP_RE = '.*?PostAPI.*?webApi.*?'
-# PUMP_RE = '"/SFDC.*?"'
-PUMP_RE = '.*?GetAPI.*?webApi.*?'
+# PUMP_RE = '.*?PostAPI.*?webApi.*?' #SFDC_API_Post
+PUMP_RE = '"/SFDC.*?"' #SFDC_API
+#PUMP_RE = '.*?GetAPI.*?webApi.*?' #SFDC_API_Get
 ROOT_PATH = 'C:\\Users\\da.long\\source\\Workspaces\\OCE Wechat Demo'
-EXCEL_FILE_NAME = u'SFDC_API_Get.xls'
+EXCEL_FILE_NAME = u'SFDC_API.xls'
 RESULT = xlwt.Workbook(encoding='utf-8', style_compression=0)
-sheet = RESULT.add_sheet('SFDC_API_Get', cell_overwrite_ok=True)
+sheet = RESULT.add_sheet('SFDC_API', cell_overwrite_ok=True)
 sheet.write(0, 0, 'API')
 sheet.write(0, 1, 'cs_file')
 sheet.write(0, 2, 'line')
