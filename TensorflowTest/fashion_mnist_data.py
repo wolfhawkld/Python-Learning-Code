@@ -47,7 +47,7 @@ def plot_value_array(i, predictions_array, true_label):
     thisplot[true_label].set_color('blue')
 
 
-# Input Fashion MNIST datasets.
+# Input Fashion MNIST datasets if there is no such data.
 fashion_mnist = keras.datasets.fashion_mnist
 (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
 
