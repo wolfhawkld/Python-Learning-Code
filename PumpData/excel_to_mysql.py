@@ -8,7 +8,7 @@ rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
 
 import Mysql.dbTest
-# Global Prams:
+# Global Params:
 HOST = "127.0.0.1"
 PORT = 3306
 DB_NAME = "test"
@@ -36,6 +36,7 @@ fo.append(sh.row_values(0))
 for i in range(1,nrows):
       dfun.append(sh.row_values(i))
 # 创建table
+cursor.execute("drop table " + OBJ_NAME + ";")
 cursor.execute("create table " + OBJ_NAME +"("+fo[0][0]+" varchar(100));")
 #创建table属性
 for i in range(1,ncols):

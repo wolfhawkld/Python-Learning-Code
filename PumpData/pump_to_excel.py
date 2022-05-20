@@ -33,6 +33,65 @@ def get_all_files(root_path, file_suffix):
     print(name_list.__len__())
     return name_list
 
+def get_col_name(line,):
+    return 
+
+# Get a table list from sql script file.
+def get_all_tables(in_file, pump_re):
+    name_list = []
+    col_list = []
+    table_cols_list = []
+    ret_cols_list = []
+    file_obj = codecs.open(in_file, 'r', 'utf-8')
+    
+    # for i, line in enumerate(file_obj):
+    #     lineno = i + 1
+    #     if line.find(pump_re) != -1:    # 判断是否是表名所在行，是则取出表名
+    #         tn = find_table_name(line)
+    #         name_list.append(tn)
+    #                                     # 动态获取该表所有列名
+    #         next_line = file_obj.seek(lineno)
+    #         if next_line.find('PRIMARY') == -1:
+    #             col_list.append(get_col_name(next_line))
+    #         else:
+    #             break
+
+
+    i = 1
+    while True:
+        line = file_obj.readline()  # 只读取一行内容
+        if not line:    # 判断是否读取到内容
+            break
+        line_str = line.strip()
+        if line_str.find(pump_re) != -1:
+            tn = find_table_name(line_str)
+            name_list.append(tn)
+        if line_str.startswith('['):
+            col_str = re.findall(r'\[.*?\]', line_str)[0]
+            col_list.append(col_str.strip('[').strip(']'))
+        if line_str.startswith(')'):
+            table_cols_list.append(col_list)
+            col_list = []
+        i += 1
+    for i in table_cols_list:
+        if len(i) == 0:
+            continue
+        else:
+            ret_cols_list.append(i)
+    print(ret_cols_list)
+    # table_cols_list = [i for i in table_cols_list if i != '[break]']
+    # print(table_cols_list)
+
+    return name_list, ret_cols_list
+
+
+# Get table name.
+def find_table_name(line):
+    tableObj = re.findall(r'\[.*?\]', line)[1]
+    ret = tableObj.strip('[').strip(']')
+    #print(ret)
+    return ret
+
 
 # Reguar Expression match.
 def find_re(line, line_num, file_name, pump_re):
