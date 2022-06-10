@@ -1,3 +1,7 @@
+import sys
+sys.path.append("..")
+from Local_lib import logo_print
+
 # Large Integer Multiplation
 def mul(a, b):
     N = 3 # 大整数拆分位数限制，到此数字时则开始实际计算，不再二分大整数
@@ -15,6 +19,7 @@ def add(a, b):
     return str(int(a) + int(b))
 
 
+logo_print.Print()
 a = input("请输入一个大整数a=")
 b = input("请输入一个大整数b=")
 w = mul(a, b)

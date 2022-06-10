@@ -1,3 +1,7 @@
+import sys
+sys.path.append("..")
+from Local_lib import logo_print
+
 # Single Source Short Path, 单源最短路径
 '''
 在有向图G.PNG中，每一边都有一个非负边权。要求图G的从源顶点s到目标顶点t之间的最短路径
@@ -66,7 +70,7 @@ def ShortestPath(vertexset, edgeset, s, t):
     print('Shortest path length:%d, node order:%s'%(res.length, res.path))
     return res
 
-
+logo_print.Print()
 vertex=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 edge=[[0,1,2],[0,2,3],[0,3,4],[1,2,3],[1,4,7],[1,5,2],[2,5,9],[2,6,2],[3,6,2],[4,7,2],[4,8,3],[5,6,1],[5,8,3],[6,8,5],[6,9,1],[7,10,1],[8,10,2],[9,8,2],[9,10,2]]
 s=0
